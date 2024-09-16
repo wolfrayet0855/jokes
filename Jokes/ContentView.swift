@@ -38,7 +38,8 @@ struct ContentView: View {
                 
                 Text(jokeVM.joke.setup)
                     .animation(.default, value: jokeVM.joke.setup)
-                
+                    .frame(maxWidth: .infinity)
+                    .lineLimit(nil)
                 Spacer()
                 
                 if showPunchline {
@@ -47,6 +48,8 @@ struct ContentView: View {
                         .bold()
                     
                     Text(jokeVM.joke.punchline)
+                            .frame(maxWidth: .infinity)
+                            .lineLimit(nil)
                     
                 }
                 
