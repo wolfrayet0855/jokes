@@ -11,9 +11,6 @@
 		9A0D919C2BF56FC3001DD8DB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0D919B2BF56FC3001DD8DB /* ContentView.swift */; };
 		9A0D919E2BF56FC5001DD8DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A0D919D2BF56FC5001DD8DB /* Assets.xcassets */; };
 		9A0D91A12BF56FC5001DD8DB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A0D91A02BF56FC5001DD8DB /* Preview Assets.xcassets */; };
-		9A0D91AB2BF56FC6001DD8DB /* JokesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0D91AA2BF56FC6001DD8DB /* JokesTests.swift */; };
-		9A0D91B52BF56FC6001DD8DB /* JokesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0D91B42BF56FC6001DD8DB /* JokesUITests.swift */; };
-		9A0D91B72BF56FC6001DD8DB /* JokesUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0D91B62BF56FC6001DD8DB /* JokesUITestsLaunchTests.swift */; };
 		9A0D91C52BF57398001DD8DB /* Joke.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0D91C42BF57398001DD8DB /* Joke.swift */; };
 		9A0D91C72BF574FA001DD8DB /* JokeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0D91C62BF574FA001DD8DB /* JokeViewModel.swift */; };
 /* End PBXBuildFile section */
@@ -42,10 +39,7 @@
 		9A0D919D2BF56FC5001DD8DB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9A0D91A02BF56FC5001DD8DB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		9A0D91A62BF56FC6001DD8DB /* JokesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JokesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		9A0D91AA2BF56FC6001DD8DB /* JokesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokesTests.swift; sourceTree = "<group>"; };
 		9A0D91B02BF56FC6001DD8DB /* JokesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JokesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		9A0D91B42BF56FC6001DD8DB /* JokesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokesUITests.swift; sourceTree = "<group>"; };
-		9A0D91B62BF56FC6001DD8DB /* JokesUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokesUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		9A0D91C32BF5701E001DD8DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		9A0D91C42BF57398001DD8DB /* Joke.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Joke.swift; sourceTree = "<group>"; };
 		9A0D91C62BF574FA001DD8DB /* JokeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeViewModel.swift; sourceTree = "<group>"; };
@@ -80,8 +74,6 @@
 			isa = PBXGroup;
 			children = (
 				9A0D91982BF56FC3001DD8DB /* Jokes */,
-				9A0D91A92BF56FC6001DD8DB /* JokesTests */,
-				9A0D91B32BF56FC6001DD8DB /* JokesUITests */,
 				9A0D91972BF56FC3001DD8DB /* Products */,
 			);
 			sourceTree = "<group>";
@@ -116,23 +108,6 @@
 				9A0D91A02BF56FC5001DD8DB /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		9A0D91A92BF56FC6001DD8DB /* JokesTests */ = {
-			isa = PBXGroup;
-			children = (
-				9A0D91AA2BF56FC6001DD8DB /* JokesTests.swift */,
-			);
-			path = JokesTests;
-			sourceTree = "<group>";
-		};
-		9A0D91B32BF56FC6001DD8DB /* JokesUITests */ = {
-			isa = PBXGroup;
-			children = (
-				9A0D91B42BF56FC6001DD8DB /* JokesUITests.swift */,
-				9A0D91B62BF56FC6001DD8DB /* JokesUITestsLaunchTests.swift */,
-			);
-			path = JokesUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -276,7 +251,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9A0D91AB2BF56FC6001DD8DB /* JokesTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,8 +258,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9A0D91B52BF56FC6001DD8DB /* JokesUITests.swift in Sources */,
-				9A0D91B72BF56FC6001DD8DB /* JokesUITestsLaunchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -493,7 +465,6 @@
 		9A0D91BE2BF56FC6001DD8DB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
@@ -515,7 +486,6 @@
 		9A0D91BF2BF56FC6001DD8DB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
@@ -537,7 +507,6 @@
 		9A0D91C12BF56FC6001DD8DB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = P9Z5QB8965;
@@ -555,7 +524,6 @@
 		9A0D91C22BF56FC6001DD8DB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = P9Z5QB8965;
