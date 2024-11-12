@@ -1,8 +1,5 @@
 //  ContentView.swift
 //  Jokes
-//
-//  Created by user on 5/15/24.
-//
 
 import SwiftUI
 import AVFAudio
@@ -12,17 +9,18 @@ struct ContentView: View {
         case general, knock_knock, programming, anime, food, dad
     }
     
-    @StateObject var jokeVM = JokeViewModel()
+    @StateObject private var jokeVM = JokeViewModel()
     @State private var showPunchline = false
     @State private var selectedJoke = JokeType.general
-    @State private var audioPlayer: AVAudioPlayer!
+    @State private var audioPlayer: AVAudioPlayer?
     @State private var soundNumber = 0
+    @State private var isSoundEnabled = true
+    @State private var showError = false
     let totalSounds = 25
     
     var body: some View {
         GeometryReader { geometry in
-            // Calculate scaling factor based on screen width
-            let scaleFactor = min(geometry.size.width / 375, geometry.size.height / 667) // Base iPhone SE 2022 size
+            let scaleFactor = min(geometry.size.width / 375, geometry.size.height / 667) // Scaling for smaller screens
             
             VStack(alignment: .leading, spacing: scaledValue(16, scale: scaleFactor)) {
                 // Header
@@ -36,20 +34,16 @@ struct ContentView: View {
                 
                 // Joke Content
                 VStack(alignment: .leading, spacing: scaledValue(8, scale: scaleFactor)) {
-                    // Setup Label
                     Text("Setup:")
                         .foregroundColor(.red)
                         .bold()
                         .font(.system(size: scaledValue(20, scale: scaleFactor)))
                     
-                    // Setup Text
                     Text(jokeVM.joke.setup)
                         .font(.system(size: scaledValue(18, scale: scaleFactor)))
                         .minimumScaleFactor(0.5)
-                        .lineLimit(nil)
                         .fixedSize(horizontal: false, vertical: true)
                     
-                    // Reserve space for Punchline to prevent layout shifts
                     Group {
                         Text("Punchline:")
                             .foregroundColor(.red)
@@ -60,7 +54,6 @@ struct ContentView: View {
                         Text(jokeVM.joke.punchline)
                             .font(.system(size: scaledValue(18, scale: scaleFactor)))
                             .minimumScaleFactor(0.5)
-                            .lineLimit(nil)
                             .fixedSize(horizontal: false, vertical: true)
                             .opacity(showPunchline ? 1 : 0)
                     }
@@ -70,20 +63,19 @@ struct ContentView: View {
                 
                 Spacer()
                 
-                // Action Buttons
+                // Sound Toggle
+                Toggle("Enable Sound", isOn: $isSoundEnabled)
+                    .padding(.horizontal, scaledValue(16, scale: scaleFactor))
+                
+                // Action Button
                 Button(showPunchline ? "Get Joke" : "Show Punchline") {
                     if showPunchline {
-                        // Fetch a new joke
-                        jokeVM.urlString = "https://joke.deno.dev/type/\(formatJokeType(jokeType: selectedJoke))/1"
-                        Task {
-                            await jokeVM.getData()
-                        }
-                    } else {
-                        // Show punchline
+                        fetchNewJoke()
+                    } else if isSoundEnabled {
                         playSound(soundName: "\(soundNumber)")
                         soundNumber = (soundNumber + 1) % totalSounds
                     }
-                    withAnimation {
+                    withAnimation(UIAccessibility.isReduceMotionEnabled ? nil : .easeInOut(duration: 0.3)) {
                         showPunchline.toggle()
                     }
                 }
@@ -117,40 +109,43 @@ struct ContentView: View {
             .frame(width: geometry.size.width, height: geometry.size.height)
             .background(Color(UIColor.systemBackground))
             .onAppear {
-                // Initial data fetch
-                jokeVM.urlString = "https://joke.deno.dev/type/\(formatJokeType(jokeType: selectedJoke))/1"
-                Task {
-                    await jokeVM.getData()
-                }
+                fetchNewJoke()
             }
-            .scaleEffect(scaleFactor)
-            .frame(width: geometry.size.width, height: geometry.size.height, alignment: .center)
+            .alert("Error", isPresented: $showError) {
+                Button("OK", role: .cancel) { }
+            } message: {
+                Text("Failed to fetch a new joke. Please check your internet connection.")
+            }
         }
     }
     
-    // Helper function to scale values based on screen size
-    func scaledValue(_ value: CGFloat, scale: CGFloat) -> CGFloat {
+    private func scaledValue(_ value: CGFloat, scale: CGFloat) -> CGFloat {
         return value * scale
     }
     
-    func formatJokeType(jokeType: JokeType) -> String {
-        if jokeType == .knock_knock {
-            return "knock-knock"
-        } else {
-            return jokeType.rawValue
+    private func formatJokeType(jokeType: JokeType) -> String {
+        jokeType == .knock_knock ? "knock-knock" : jokeType.rawValue
+    }
+    
+    private func fetchNewJoke() {
+        jokeVM.urlString = "https://joke.deno.dev/type/\(formatJokeType(jokeType: selectedJoke))/1"
+        Task {
+            await jokeVM.getData()
+            
+            // Check if joke data was successfully fetched (assuming jokeVM provides an error state)
+            if jokeVM.joke.setup.isEmpty {
+                showError = true
+            }
         }
     }
     
-    func playSound(soundName: String) {
-        guard let soundFile = NSDataAsset(name: soundName) else {
-            print("😡 Could not read file \(soundName)")
-            return
-        }
+    private func playSound(soundName: String) {
+        guard let soundFile = NSDataAsset(name: soundName), isSoundEnabled else { return }
         do {
             audioPlayer = try AVAudioPlayer(data: soundFile.data)
-            audioPlayer.play()
+            audioPlayer?.play()
         } catch {
-            print("😡 ERROR: \(error.localizedDescription) creating audioPlayer.")
+            print("Error creating audioPlayer: \(error.localizedDescription)")
         }
     }
 }
