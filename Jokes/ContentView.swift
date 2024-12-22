@@ -1,10 +1,13 @@
+//
 //  ContentView.swift
 //  Jokes
+//
 
 import SwiftUI
-import AVFAudio
+import AVFAudio     // Still used for the playSound functionality
 
 struct ContentView: View {
+    
     enum JokeType: String, CaseIterable {
         case general, knock_knock, programming, anime, food, dad
     }
@@ -16,24 +19,40 @@ struct ContentView: View {
     @State private var soundNumber = 0
     @State private var isSoundEnabled = true
     @State private var showError = false
+    
     let totalSounds = 25
     
     var body: some View {
-        GeometryReader { geometry in
-            let scaleFactor = min(geometry.size.width / 375, geometry.size.height / 667) // Scaling for smaller screens
+        TabView {
+            jokesHomeView
+                .tabItem {
+                    Label("Home", systemImage: "house")
+                }
             
-            VStack(alignment: .leading, spacing: scaledValue(16, scale: scaleFactor)) {
+            FavoritesView(jokeVM: jokeVM)
+                .tabItem {
+                    Label("Favorites", systemImage: "star.fill")
+                }
+        }
+    }
+    
+    // MARK: - Home View
+    private var jokesHomeView: some View {
+        GeometryReader { geometry in
+            let scaleFactor = min(geometry.size.width / 375, geometry.size.height / 667)
+            
+            VStack(alignment: .leading, spacing: scaledValue(17, scale: scaleFactor)) {
                 // Header
                 Text("Jokes! 😜")
                     .font(.system(size: scaledValue(32, scale: scaleFactor), weight: .bold))
                     .foregroundColor(.white)
                     .frame(maxWidth: .infinity)
-                    .padding(scaledValue(16, scale: scaleFactor))
+                    .padding(scaledValue(17, scale: scaleFactor))
                     .background(Color.red)
                     .cornerRadius(scaledValue(8, scale: scaleFactor))
                 
                 // Joke Content
-                VStack(alignment: .leading, spacing: scaledValue(8, scale: scaleFactor)) {
+                VStack(alignment: .leading, spacing: scaledValue(17, scale: scaleFactor)) {
                     Text("Setup:")
                         .foregroundColor(.red)
                         .bold()
@@ -59,32 +78,56 @@ struct ContentView: View {
                     }
                     .animation(.easeInOut(duration: 0.3), value: showPunchline)
                 }
-                .padding(.horizontal, scaledValue(16, scale: scaleFactor))
+                .padding(.horizontal, scaledValue(17, scale: scaleFactor))
                 
                 Spacer()
                 
                 // Sound Toggle
                 Toggle("Enable Sound", isOn: $isSoundEnabled)
-                    .padding(.horizontal, scaledValue(16, scale: scaleFactor))
+                    .padding(.horizontal, scaledValue(17, scale: scaleFactor))
                 
-                // Action Button
-                Button(showPunchline ? "Get Joke" : "Show Punchline") {
-                    if showPunchline {
+                // Buttons Row - all the same size
+                HStack(spacing: 17) {
+                    // 1) Get Joke
+                    Button("Get Joke") {
                         fetchNewJoke()
-                    } else if isSoundEnabled {
-                        playSound(soundName: "\(soundNumber)")
-                        soundNumber = (soundNumber + 1) % totalSounds
+                        withAnimation {
+                            showPunchline = false
+                        }
                     }
-                    withAnimation(UIAccessibility.isReduceMotionEnabled ? nil : .easeInOut(duration: 0.3)) {
-                        showPunchline.toggle()
+                    .buttonStyle(.borderedProminent)
+                    .tint(.red)
+                    .font(.system(size: scaledValue(16, scale: scaleFactor), weight: .bold))
+                    .frame(maxWidth: .infinity)
+                    
+                    // 2) Punchline
+                    Button("Punchline") {
+                        if isSoundEnabled {
+                            playSound(soundName: "\(soundNumber)")
+                            soundNumber = (soundNumber + 1) % totalSounds
+                        }
+                        withAnimation(UIAccessibility.isReduceMotionEnabled ? nil : .easeInOut(duration: 0.3)) {
+                            showPunchline = true
+                        }
                     }
+                    .buttonStyle(.borderedProminent)
+                    .tint(.red)
+                    .font(.system(size: scaledValue(16, scale: scaleFactor), weight: .bold))
+                    .frame(maxWidth: .infinity)
+                    
+                    // 3) Star icon (blue)
+                    Button {
+                        jokeVM.addToFavorites(jokeVM.joke)
+                    } label: {
+                        Image(systemName: "star.fill")
+                            .font(.title2)
+                    }
+                    .buttonStyle(.borderedProminent)
+                    .tint(.cyan) 
+                    .frame(maxWidth: .infinity)
                 }
-                .buttonStyle(.borderedProminent)
-                .tint(.red)
-                .font(.system(size: scaledValue(20, scale: scaleFactor), weight: .bold))
-                .frame(maxWidth: .infinity)
-                .padding(.horizontal, scaledValue(16, scale: scaleFactor))
-                .padding(.bottom, scaledValue(16, scale: scaleFactor))
+                .padding(.horizontal, scaledValue(17, scale: scaleFactor))
+                .padding(.bottom, scaledValue(17, scale: scaleFactor))
                 
                 // Joke Type Picker
                 HStack {
@@ -103,14 +146,12 @@ struct ContentView: View {
                     .pickerStyle(MenuPickerStyle())
                     .frame(width: scaledValue(150, scale: scaleFactor))
                 }
-                .padding(.horizontal, scaledValue(16, scale: scaleFactor))
-                .padding(.bottom, scaledValue(16, scale: scaleFactor))
+                .padding(.horizontal, scaledValue(17, scale: scaleFactor))
+                .padding(.bottom, scaledValue(17, scale: scaleFactor))
             }
             .frame(width: geometry.size.width, height: geometry.size.height)
             .background(Color(UIColor.systemBackground))
-            .onAppear {
-                fetchNewJoke()
-            }
+            // Removed .onAppear { fetchNewJoke() } so a joke is only fetched on button tap.
             .alert("Error", isPresented: $showError) {
                 Button("OK", role: .cancel) { }
             } message: {
@@ -118,6 +159,8 @@ struct ContentView: View {
             }
         }
     }
+    
+    // MARK: - Helpers
     
     private func scaledValue(_ value: CGFloat, scale: CGFloat) -> CGFloat {
         return value * scale
@@ -132,7 +175,7 @@ struct ContentView: View {
         Task {
             await jokeVM.getData()
             
-            // Check if joke data was successfully fetched (assuming jokeVM provides an error state)
+            // Show error if no joke was retrieved
             if jokeVM.joke.setup.isEmpty {
                 showError = true
             }
@@ -150,9 +193,10 @@ struct ContentView: View {
     }
 }
 
+// MARK: - Preview
+
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
     }
 }
-
