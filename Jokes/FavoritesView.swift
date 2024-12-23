@@ -10,16 +10,17 @@ struct FavoritesView: View {
                     VStack(alignment: .leading, spacing: 4) {
                         Text("Setup: \(joke.setup)")
                             .font(.headline)
-                            .foregroundColor(.black)
+                            // .primary automatically adapts to light/dark mode
+                            .foregroundColor(.primary)
                         
                         Text("Punchline: \(joke.punchline)")
                             .font(.subheadline)
-                            .foregroundColor(.cyan)
+                            // .accentColor automatically adapts or uses your app's accent color
+                            .foregroundColor(.accentColor)
                     }
                 }
                 .onDelete(perform: deleteJoke)
             }
-            // Ensure the list is scrollable and stylized
             .listStyle(.insetGrouped)
             .navigationTitle("Favorite Jokes")
         }
