@@ -16,31 +16,12 @@
 		9AF781E92D17900F00E9AEAB /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF781E82D17900800E9AEAB /* FavoritesView.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		9A0D91A72BF56FC6001DD8DB /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9A0D918E2BF56FC3001DD8DB /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 9A0D91952BF56FC3001DD8DB;
-			remoteInfo = Jokes;
-		};
-		9A0D91B12BF56FC6001DD8DB /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9A0D918E2BF56FC3001DD8DB /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 9A0D91952BF56FC3001DD8DB;
-			remoteInfo = Jokes;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		9A0D91962BF56FC3001DD8DB /* Jokes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jokes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A0D91992BF56FC3001DD8DB /* JokesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokesApp.swift; sourceTree = "<group>"; };
 		9A0D919B2BF56FC3001DD8DB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		9A0D919D2BF56FC5001DD8DB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9A0D91A02BF56FC5001DD8DB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		9A0D91A62BF56FC6001DD8DB /* JokesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JokesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		9A0D91B02BF56FC6001DD8DB /* JokesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JokesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A0D91C32BF5701E001DD8DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		9A0D91C42BF57398001DD8DB /* Joke.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Joke.swift; sourceTree = "<group>"; };
 		9A0D91C62BF574FA001DD8DB /* JokeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeViewModel.swift; sourceTree = "<group>"; };
@@ -49,20 +30,6 @@
 
 /* Begin PBXFrameworksBuildPhase section */
 		9A0D91932BF56FC3001DD8DB /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9A0D91A32BF56FC6001DD8DB /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9A0D91AD2BF56FC6001DD8DB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -84,8 +51,6 @@
 			isa = PBXGroup;
 			children = (
 				9A0D91962BF56FC3001DD8DB /* Jokes.app */,
-				9A0D91A62BF56FC6001DD8DB /* JokesTests.xctest */,
-				9A0D91B02BF56FC6001DD8DB /* JokesUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -133,42 +98,6 @@
 			productReference = 9A0D91962BF56FC3001DD8DB /* Jokes.app */;
 			productType = "com.apple.product-type.application";
 		};
-		9A0D91A52BF56FC6001DD8DB /* JokesTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 9A0D91BD2BF56FC6001DD8DB /* Build configuration list for PBXNativeTarget "JokesTests" */;
-			buildPhases = (
-				9A0D91A22BF56FC6001DD8DB /* Sources */,
-				9A0D91A32BF56FC6001DD8DB /* Frameworks */,
-				9A0D91A42BF56FC6001DD8DB /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				9A0D91A82BF56FC6001DD8DB /* PBXTargetDependency */,
-			);
-			name = JokesTests;
-			productName = JokesTests;
-			productReference = 9A0D91A62BF56FC6001DD8DB /* JokesTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		9A0D91AF2BF56FC6001DD8DB /* JokesUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 9A0D91C02BF56FC6001DD8DB /* Build configuration list for PBXNativeTarget "JokesUITests" */;
-			buildPhases = (
-				9A0D91AC2BF56FC6001DD8DB /* Sources */,
-				9A0D91AD2BF56FC6001DD8DB /* Frameworks */,
-				9A0D91AE2BF56FC6001DD8DB /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				9A0D91B22BF56FC6001DD8DB /* PBXTargetDependency */,
-			);
-			name = JokesUITests;
-			productName = JokesUITests;
-			productReference = 9A0D91B02BF56FC6001DD8DB /* JokesUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -181,14 +110,6 @@
 				TargetAttributes = {
 					9A0D91952BF56FC3001DD8DB = {
 						CreatedOnToolsVersion = 15.3;
-					};
-					9A0D91A52BF56FC6001DD8DB = {
-						CreatedOnToolsVersion = 15.3;
-						TestTargetID = 9A0D91952BF56FC3001DD8DB;
-					};
-					9A0D91AF2BF56FC6001DD8DB = {
-						CreatedOnToolsVersion = 15.3;
-						TestTargetID = 9A0D91952BF56FC3001DD8DB;
 					};
 				};
 			};
@@ -206,8 +127,6 @@
 			projectRoot = "";
 			targets = (
 				9A0D91952BF56FC3001DD8DB /* Jokes */,
-				9A0D91A52BF56FC6001DD8DB /* JokesTests */,
-				9A0D91AF2BF56FC6001DD8DB /* JokesUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -219,20 +138,6 @@
 			files = (
 				9A0D91A12BF56FC5001DD8DB /* Preview Assets.xcassets in Resources */,
 				9A0D919E2BF56FC5001DD8DB /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9A0D91A42BF56FC6001DD8DB /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9A0D91AE2BF56FC6001DD8DB /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -251,34 +156,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9A0D91A22BF56FC6001DD8DB /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9A0D91AC2BF56FC6001DD8DB /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		9A0D91A82BF56FC6001DD8DB /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 9A0D91952BF56FC3001DD8DB /* Jokes */;
-			targetProxy = 9A0D91A72BF56FC6001DD8DB /* PBXContainerItemProxy */;
-		};
-		9A0D91B22BF56FC6001DD8DB /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 9A0D91952BF56FC3001DD8DB /* Jokes */;
-			targetProxy = 9A0D91B12BF56FC6001DD8DB /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		9A0D91B82BF56FC6001DD8DB /* Debug */ = {
@@ -422,7 +300,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = beta.Jokes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -455,7 +333,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = beta.Jokes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -463,82 +341,6 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		9A0D91BE2BF56FC6001DD8DB /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = P9Z5QB8965;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = beta.JokesTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Jokes.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Jokes";
-			};
-			name = Debug;
-		};
-		9A0D91BF2BF56FC6001DD8DB /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = P9Z5QB8965;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = beta.JokesTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Jokes.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Jokes";
-			};
-			name = Release;
-		};
-		9A0D91C12BF56FC6001DD8DB /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = P9Z5QB8965;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = beta.JokesUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Jokes;
-			};
-			name = Debug;
-		};
-		9A0D91C22BF56FC6001DD8DB /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = P9Z5QB8965;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = beta.JokesUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Jokes;
 			};
 			name = Release;
 		};
@@ -559,24 +361,6 @@
 			buildConfigurations = (
 				9A0D91BB2BF56FC6001DD8DB /* Debug */,
 				9A0D91BC2BF56FC6001DD8DB /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		9A0D91BD2BF56FC6001DD8DB /* Build configuration list for PBXNativeTarget "JokesTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				9A0D91BE2BF56FC6001DD8DB /* Debug */,
-				9A0D91BF2BF56FC6001DD8DB /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		9A0D91C02BF56FC6001DD8DB /* Build configuration list for PBXNativeTarget "JokesUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				9A0D91C12BF56FC6001DD8DB /* Debug */,
-				9A0D91C22BF56FC6001DD8DB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
