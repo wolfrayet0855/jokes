@@ -10,12 +10,10 @@ struct FavoritesView: View {
                     VStack(alignment: .leading, spacing: 4) {
                         Text("Setup: \(joke.setup)")
                             .font(.headline)
-                            // .primary automatically adapts to light/dark mode
                             .foregroundColor(.primary)
                         
                         Text("Punchline: \(joke.punchline)")
                             .font(.subheadline)
-                            // .accentColor automatically adapts or uses your app's accent color
                             .foregroundColor(.accentColor)
                     }
                 }
@@ -24,6 +22,7 @@ struct FavoritesView: View {
             .listStyle(.insetGrouped)
             .navigationTitle("Favorite Jokes")
         }
+        .navigationViewStyle(StackNavigationViewStyle()) // Ensures full-screen layout
     }
     
     private func deleteJoke(at offsets: IndexSet) {
@@ -31,3 +30,4 @@ struct FavoritesView: View {
         jokeVM.saveFavorites()
     }
 }
+
