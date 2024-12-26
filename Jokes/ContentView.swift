@@ -17,7 +17,7 @@ struct ContentView: View {
     @State private var selectedJoke = JokeType.general
     @State private var audioPlayer: AVAudioPlayer?
     @State private var soundNumber = 0
-    @State private var isSoundEnabled = true
+    @State private var isSoundEnabled = false
     @State private var showError = false
     
     let totalSounds = 25
