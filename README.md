@@ -1,4 +1,4 @@
-# Jokes App
+# Joke Assembly
 
 A SwiftUI application that fetches random jokes from a remote API, displays them to the user, and allows saving favorites. This project demonstrates basic data fetching, SwiftUI layout, audio playback, and local data persistence using `UserDefaults`.
 
