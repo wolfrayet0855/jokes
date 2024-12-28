@@ -1,10 +1,10 @@
-# Jokes App
+# Joke Assembly
 
 A SwiftUI application that fetches random jokes from a remote API, displays them to the user, and allows saving favorites. This project demonstrates basic data fetching, SwiftUI layout, audio playback, and local data persistence using `UserDefaults`.
 
 ## Overview
 
-The **Jokes App** allows users to:
+The **Joke Assembly** allows users to:
 - Fetch a random joke from [joke.deno.dev](https://joke.deno.dev) based on a selected **Joke Type** (e.g., *general*, *dad*, *knock-knock*).  
 - Toggle whether or not the punchline is shown.  
 - Play a short audio clip (if enabled) when revealing the punchline.  
